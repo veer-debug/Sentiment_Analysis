@@ -15,7 +15,7 @@ class Login:
         self.root=root
         self.root.geometry("1500x780")
         self.root.title("Login Page")
-        self.root.iconbitmap(r"C:\Users\theve\OneDrive\Desktop\git_projects\my_Values\Images\logo.ico")
+        self.root.iconbitmap(r"C:\Users\theve\OneDrive\Desktop\git_projects\Sentiment_Analysis\resorces\logo.ico")
         self.Login(root)
     def Login(self,root):   
         self.clear()     
@@ -39,7 +39,7 @@ class Login:
         labeles=Label(Right_frame,text="Sign in",width=40,bg="light yellow",fg="green",font=("times new roman",25,"bold"))
         labeles.pack(pady=10)
         
-        img=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Full_Stack_Number_System\Images\logo.ico")
+        img=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Sentiment_Analysis\resorces\logo.ico")
         img=img.resize((40,40))
         self.photoimg=ImageTk.PhotoImage(img)
         
@@ -91,7 +91,7 @@ class Login:
         labeles=Label(Right_frame,text="Sign Up",width=30,bg="light yellow",fg="green",font=("times new roman",18,"bold"))
         labeles.pack(pady=10)
         
-        img1=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Full_Stack_Number_System\Images\logo.ico")
+        img1=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Sentiment_Analysis\resorces\logo.ico")
         img1=img1.resize((40,40))
         self.photoimg=ImageTk.PhotoImage(img1)
         
