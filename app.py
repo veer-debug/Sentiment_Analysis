@@ -1,95 +1,155 @@
 from tkinter import *
-from mydb import Database
+from tkinter import ttk
+from PIL import Image,ImageTk
+from tkinter import scrolledtext
 from tkinter import messagebox
-from myapi import API
+from mydb import Database
+# from sign_up import Signup
 
-class NLPApp:
-    
-    def __init__(self):
+
+
+class Login:
+    def __init__(self,root):
         self.dob=Database()
-        self.api=API()
+        # self.signup=Signup(root)
+        self.root=root
+        self.root.geometry("1500x780")
+        self.root.title("Login Page")
+        self.root.iconbitmap(r"C:\Users\theve\OneDrive\Desktop\git_projects\my_Values\Images\logo.ico")
+        self.Login(root)
+    def Login(self,root):   
+        self.clear()     
+        title_ibl=Label(self.root,text="Analysis",font=("times new roman",30,"bold"),bg="white",fg="red")
+        title_ibl.place(x=0,y=0,width=1530,height=45)
+        
+        main_frame=Frame(root,bd=2)
+        main_frame.place(x=0,y=50,width=1600,height=1000)
         
         
-        self.root=Tk()
-        self.root.title("Nlp App")
-        self.root.iconbitmap(r'C:\Users\theve\OneDrive\Desktop\DATA-S\05_GUI\resorces\logo.ico')
-        self.root.geometry('400x520')
-        self.root.config(bg="light green")
-        self.login_gui()
-        
-        self.root.mainloop()
+        #-----------------------------------------left lable frame---------------------------------------------------------------
+        Left_frame=LabelFrame(main_frame,bd=2,bg="light green",relief=RIDGE,font=("times new roman",12,"bold"))
+        Left_frame.place(x=20,y=0,width=1460,height=680)
         
         
-    
-    
-    def login_gui(self):
-        self.clear()
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
         
-        labeli=Label(self.root,text="Enter Email")
-        labeli.pack(pady=10)
+        # =============================RIGHT LABLE FRAME===================
+        Right_frame=LabelFrame(main_frame,bd=2,bg="light yellow",relief=RIDGE,text="Sign in",font=("times new roman",12,"bold"))
+        Right_frame.place(x=480,y=50,width=600,height=580)
         
-        self.email_input=Entry(self.root,width=50)
+        labeles=Label(Right_frame,text="Sign in",width=40,bg="light yellow",fg="green",font=("times new roman",25,"bold"))
+        labeles.pack(pady=10)
+        
+        img=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Full_Stack_Number_System\Images\logo.ico")
+        img=img.resize((40,40))
+        self.photoimg=ImageTk.PhotoImage(img)
+        
+        f_lb=Label(Right_frame,image=self.photoimg)
+        f_lb.pack(pady=(10,10))
+        
+        
+        labele=Label(Right_frame,text="Enter Email",width=40,bg="light yellow",font=("times new roman",25,"bold"))
+        labele.pack(pady=10)
+        
+        self.email_input=Entry(Right_frame,width=50,font=("times new roman",15,"bold"))
         self.email_input.pack(pady=(5,10),ipady=4)
-
-        labeli2=Label(self.root,text="Enter Password")
-        labeli2.pack(pady=10)
         
-        self.password_input=Entry(self.root,width=50,show="*")
-        self.password_input.pack(pady=(5,10),ipady=4)
+        labelp=Label(Right_frame,text="Enter Password",width=40,bg="light yellow",font=("times new roman",25,"bold"))
+        labelp.pack(pady=10)
         
-        login_btn=Button(self.root,text="Login",width=30,height=2,command=self.perform_login)
-        login_btn.pack(pady=(10,10))
+        self.password_input=Entry(Right_frame,width=50,font=("times new roman",15,"bold"))
+        self.password_input.pack(pady=(5,5),ipady=4)
         
-        labeli3=Label(self.root,text="Not a member ")
-        labeli3.pack(pady=10)
+        login=Button(Right_frame,text="Sign in",width=20,font=("times new roman",20,"bold"),bg="red",fg="white",command=self.login)
+        login.pack(pady=10)
         
-        redirect_btn=Button(self.root,text="Register",width=30,height=2,command=self.register_gui)
-        redirect_btn.pack(pady=(10,10))
+        labelr=Label(Right_frame,text="Don't have account ",width=40,bg="light yellow",font=("times new roman",15,"bold"))
+        labelr.place(x=-20,y=445)
         
+        Rigister=Button(Right_frame,text="Rigister Now",width=10,font=("times new roman",15,"bold"),bg="green",fg="white",command=self.register)
+        Rigister.place(x=325,y=440)
         
-    def register_gui(self):
+    def Sign_up(self,root):
         self.clear()
         
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
+        title_ibl=Label(self.root,text="Analysis",font=("times new roman",30,"bold"),bg="white",fg="red")
+        title_ibl.place(x=0,y=0,width=1530,height=45)
         
-        labeli=Label(self.root,text="Enter Name")
-        labeli.pack(pady=10)
+        main_frame=Frame(root,bd=2)
+        main_frame.place(x=0,y=50,width=1600,height=1000)
         
-        self.name_input=Entry(self.root,width=50)
+        
+        #-----------------------------------------left lable frame---------------------------------------------------------------
+        Left_frame=LabelFrame(main_frame,bd=2,bg="light green",relief=RIDGE,font=("times new roman",12,"bold"))
+        Left_frame.place(x=20,y=0,width=1460,height=680)
+        
+        
+        
+        # =============================RIGHT LABLE FRAME===================
+        Right_frame=LabelFrame(main_frame,bd=2,bg="light yellow",relief=RIDGE,text="Sign Up",font=("times new roman",12,"bold"))
+        Right_frame.place(x=480,y=50,width=600,height=590)
+        
+        labeles=Label(Right_frame,text="Sign Up",width=30,bg="light yellow",fg="green",font=("times new roman",18,"bold"))
+        labeles.pack(pady=10)
+        
+        img1=Image.open(r"C:\Users\theve\OneDrive\Desktop\git_projects\Full_Stack_Number_System\Images\logo.ico")
+        img1=img1.resize((40,40))
+        self.photoimg=ImageTk.PhotoImage(img1)
+        
+        f_lb=Label(Right_frame,image=self.photoimg)
+        f_lb.pack(pady=(5,5))
+        
+        
+        labelen=Label(Right_frame,text="Enter Email",width=30,bg="light yellow",font=("times new roman",18,"bold"))
+        labelen.pack(pady=10)
+        
+        self.name_input=Entry(Right_frame,width=50,font=("times new roman",15,"bold"))
         self.name_input.pack(pady=(5,10),ipady=4)
-
-        labeli2=Label(self.root,text="Enter email")
-        labeli2.pack(pady=10)
         
-        self.email_input=Entry(self.root,width=50)
+        labele=Label(Right_frame,text="Enter Email",width=30,bg="light yellow",font=("times new roman",18,"bold"))
+        labele.pack(pady=10)
+        
+        self.email_input=Entry(Right_frame,width=50,font=("times new roman",15,"bold"))
         self.email_input.pack(pady=(5,10),ipady=4)
         
-        labeli4=Label(self.root,text="Enter password")
-        labeli4.pack(pady=10)
+        labelp=Label(Right_frame,text="Enter Password",width=30,bg="light yellow",font=("times new roman",18,"bold"))
+        labelp.pack(pady=10)
         
-        self.password_input=Entry(self.root,width=50,show="*")
-        self.password_input.pack(pady=(5,10),ipady=4)
+        self.password_input=Entry(Right_frame,width=50,font=("times new roman",15,"bold"))
+        self.password_input.pack(pady=(5,5),ipady=4)
         
-        register_btn=Button(self.root,text="Register",width=30,height=2,command=self.perform_register)
-        register_btn.pack(pady=(10,10))
+        rigester1=Button(Right_frame,text="Sign up",width=20,font=("times new roman",20,"bold"),bg="red",fg="white",command=self.register1)
+        rigester1.pack(pady=10)
         
-        labeli3=Label(self.root,text="Alredy a member ")
-        labeli3.pack(pady=10)
+        labelr=Label(Right_frame,text="Alrady have a account ",width=40,bg="light yellow",font=("times new roman",15,"bold"))
+        labelr.place(x=-20,y=500)
         
-        redirect_btn=Button(self.root,text="Login Now",width=30,height=2,command=self.login_gui)
-        redirect_btn.pack(pady=(10,10))
-        
-        
+        Rigister1=Button(Right_frame,text="Login",width=10,font=("times new roman",15,"bold"),bg="green",fg="white",command=self.login1)
+        Rigister1.place(x=325,y=500)
+    # ===========================================
     def clear(self):
         for i in self.root.pack_slaves():
             i.destroy()
+    # ====================
+    
+    
+    def login(self):
+        # pass
+        email=self.email_input.get()
+        password=self.password_input.get()
+        
+        responce=self.dob.search(email,password)    
+        if responce:
+            messagebox.showinfo('Success',"Login Succesful")
+            # self.Sign_up(root)
+        else:
+            messagebox.showerror('Error',"Envlid User")
+    def login1(self):
+        self.Login(root)
             
-    def perform_register(self):
+    def register(self):
+        self.Sign_up(root)
+        
+    def register1(self):
         name=self.name_input.get()
         email=self.email_input.get()
         password=self.password_input.get()
@@ -97,106 +157,26 @@ class NLPApp:
         
         if respons:
             messagebox.showinfo('Success',"Registration success")
+            self.Login(root)
             
         else:
             messagebox.showerror('Error',"Email alredy exist")
-    def perform_login(self):
-        email=self.email_input.get()
-        password=self.password_input.get()
-        
-        responce=self.dob.search(email,password)    
-        if responce:
-            messagebox.showinfo('Success',"Login Succesful")
-            self.home_gui()
-        else:
-            messagebox.showerror('Error',"Envlid User")
-    
-    
-    def home_gui(self):
-        self.clear()
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
         
         
-        sentiment_btn=Button(self.root,text="Sentiment Analysis",width=30,height=2,command=self.sentiment_gui)
-        sentiment_btn.pack(pady=(10,10))
         
-        ner_btn=Button(self.root,text="Name Entry Recognition",width=30,height=2,command=self.ner_gui)
-        ner_btn.pack(pady=(10,10))
         
-        emotion_btn=Button(self.root,text="EmotionPrediction",width=30,height=2,command=self.emotion_gui)
-        emotion_btn.pack(pady=(10,10))
         
-        logout_btn=Button(self.root,text="Log out",width=30,height=2,command=self.login_gui)
-        logout_btn.pack(pady=(10,10))
         
-    def sentiment_gui(self):
-        self.clear()
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
+        
 
-        heading1=Label(self.root,text='SENTIMENT',bg='light green',fg='black')
-        heading1.pack(pady=10)
-        heading1.config(font=('verdana',24))
         
-        self.labeli=Label(self.root,text="Enter password")
-        self.labeli.pack(pady=10)
-        
-        self.sentiment_input=Entry(self.root,width=50)
-        self.sentiment_input.pack(pady=(5,10),ipady=4)
-        
-        sentiment_btn=Button(self.root,text="Sentiment Analysis",width=30,height=2,command=self.do_sentiment)
-        sentiment_btn.pack(pady=(10,10))
-        
-        
-        self.result=Label(self.root,text="",bg='light green',fg='white')
-        self.result.pack(pady=10)
-        self.result.config(font=('verdana',16))
-        
-        sentiment_btn=Button(self.root,text="Go Back",width=30,height=2,command=self.home_gui)
-        sentiment_btn.pack(pady=(10,10))
-        
-        
-        
-        
-        
-    def ner_gui(self):
-        self.clear()
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
 
-        heading1=Label(self.root,text='NER',bg='light green',fg='black')
-        heading1.pack(pady=10)
-        heading1.config(font=('verdana',24))
-        
-        
-        
-        
-    def emotion_gui(self):
-        self.clear()
-        heading=Label(self.root,text='NLPApp',bg='light green',fg='black')
-        heading.pack(pady=20)
-        heading.config(font=('verdana',24,'bold'))
-        
-        heading1=Label(self.root,text='Emotion',bg='light green',fg='black')
-        heading1.pack(pady=10)
-        heading1.config(font=('verdana',24))
-        
-        
-    def do_sentiment(self):
-        txt=self.sentiment_input.get()
-        result=self.api.sentiment_analysis(txt)
-        txt=""
-        for i in result['sentiment']:
-            txt=txt+i+" -> "+str(result['sentiment'][i])+'\n'
-                
-        self.result['text']=txt
-        
-        
-        
+
+
+
+if __name__=="__main__":
+    root=Tk()
+    obj=Login(root)
+    root.mainloop()
+   
     
-    
-nlp=NLPApp()
