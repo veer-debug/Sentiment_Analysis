@@ -18,9 +18,7 @@ class Login:
         self.root.geometry("1500x780")
         self.root.title("Login Page")
         self.root.iconbitmap(r"C:\Users\theve\OneDrive\Desktop\git_projects\Sentiment_Analysis\resorces\logo.ico")
-        # self.Login(root)
-        self.Sentiment_analysis()
-        # self.main()
+        self.Login(root)
     def Login(self,root):   
         self.clear()     
         title_ibl=Label(self.root,text="Analysis",font=("times new roman",30,"bold"),bg="white",fg="red")
@@ -250,7 +248,7 @@ class Login:
         sentiment_btn.pack(pady=(30,30))
         
         
-        self.result=Label(Left_frame,text="",bg='light yellow',fg='light green')
+        self.result=Label(Left_frame,text="",bg='light yellow',fg='black')
         self.result.pack(pady=20)
         self.result.config(font=('verdana',16))
         
