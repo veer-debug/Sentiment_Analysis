@@ -125,7 +125,7 @@ class Login:
         labelr=Label(Right_frame,text="Alrady have a account ",width=40,bg="light yellow",font=("times new roman",15,"bold"))
         labelr.place(x=-20,y=500)
         
-        Rigister1=Button(Right_frame,text="Login",width=10,font=("times new roman",15,"bold"),bg="green",fg="white",command=self.login)
+        Rigister1=Button(Right_frame,text="Login",width=10,font=("times new roman",15,"bold"),bg="green",fg="white",command=self.login1)
         Rigister1.place(x=325,y=500)
     # ===========================================
     def clear(self):
